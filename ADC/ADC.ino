@@ -26,21 +26,32 @@
  http://arduino.cc/en/Tutorial/AnalogInput
  
  */
-
+const int  buttonPin =3;
+int buttonState = 0;         // current state of the button
 int sensorPin = A0;    // select the input pin for the potentiometer
+int sensorPin1 = A1;    // select the input pin for the potentiometer
 int ledPin = 13;      // select the pin for the LED
 int sensorValue = 0;  // variable to store the value coming from the sensor
-
+int sensorValue1 = 0;  // variable to store the value coming from the sensor
 void setup() {
   Serial.begin(9600); 
   // declare the ledPin as an OUTPUT:
+  pinMode(buttonPin, INPUT);
   pinMode(ledPin, OUTPUT);  
 }
 
 void loop() {
   // read the value from the sensor:
   sensorValue = analogRead(sensorPin);
-  Serial.write( sensorValue,DEC); 
+  sensorValue1 = analogRead(sensorPin1);
+  buttonState = digitalRead(buttonPin);
+  Serial.print("First sensor: ");
+  Serial.println( sensorValue,DEC); 
+  
+  Serial.print("Second sensor: ");
+  Serial.print( sensorValue1,DEC); 
+  Serial.print(", digital value is ");
+  Serial.println(buttonState,DEC);
   // turn the ledPin on
   digitalWrite(ledPin, HIGH);  
   // stop the program for <sensorValue> milliseconds:
@@ -48,5 +59,5 @@ void loop() {
   // turn the ledPin off:        
   digitalWrite(ledPin, LOW);   
   // stop the program for for <sensorValue> milliseconds:
-  delay(200);                  
+  delay(800);                  
 }
