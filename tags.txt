@@ -1,0 +1,3 @@
+Simple analog moisture sensor to uart
+
+Первый простой аналоговый датчик влажности, считывание чисел и отправка в UART
